@@ -38,6 +38,10 @@ const validators: { [K in keyof any]: ValidatorSpec<any[K]> } = {
     default: '',
   }),
   STORE_ENCRYPTION_KEY: str32(),
+  VERCEL_CLIENT_ID: str(),
+  VERCEL_CLIENT_SECRET: str(),
+  VERCEL_REDIRECT_URI: url(),
+  VERCEL_BASE_URL: url(),
 };
 
 if (process.env.NODE_ENV !== 'local' && process.env.NODE_ENV !== 'test') {
