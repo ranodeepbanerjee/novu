@@ -38,14 +38,22 @@ const validators: { [K in keyof any]: ValidatorSpec<any[K]> } = {
     default: '',
   }),
   STORE_ENCRYPTION_KEY: str32(),
-  VERCEL_CLIENT_ID: str(),
-  VERCEL_CLIENT_SECRET: str(),
-  VERCEL_REDIRECT_URI: url(),
-  VERCEL_BASE_URL: url(),
 };
 
 if (process.env.NODE_ENV !== 'local' && process.env.NODE_ENV !== 'test') {
   validators.SENTRY_DSN = str();
+  validators.VERCEL_CLIENT_ID = str({
+    default: '',
+  });
+  validators.VERCEL_CLIENT_SECRET = str({
+    default: '',
+  });
+  validators.VERCEL_REDIRECT_URI = url({
+    default: '',
+  });
+  validators.VERCEL_BASE_URL = url({
+    default: '',
+  });
 }
 
 export function validateEnv() {
